@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portofolio Wulan Febri Enjelina — Lulusan D4 Keamanan Sistem Informasi dengan pengalaman Administrasi HR, Web Development, IT Support, dan Network Administration.">
+  <title>Portofolio — Wulan Febri Enjelina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --bg: #080d18;
+      --surface: #101827;
+      --surface2: #131f31;
+      --line: rgba(148,163,184,.16);
+      --text: #f1f5f9;
+      --muted: #a5b2c5;
+      --accent: #67e8f9;
+      --accent2: #818cf8;
+      --green: #6ee7b7;
+      --radius: 22px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+
+    /* Navbar */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 13, 24, .72);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      transition: background .3s;
+    }
+    .nav-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { font: 800 1rem "Manrope", sans-serif; letter-spacing: .05em; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 22px; align-items: center; font-size: .88rem; color: #cbd5e1; }
+    .nav-links a { position: relative; padding: 4px 0; transition: color .25s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 9px 12px;
+      cursor: pointer;
+    }
+
+    /* Hero Cover */
+    .hero-cover {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 96px 20px 64px;
+      overflow: hidden;
+      background: #070b14;
+    }
+    .hero-bg-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .hero-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      filter: contrast(1.06) saturate(1.04) brightness(.78);
+      transform: scale(1.02);
+      animation: slowZoom 18s ease-in-out infinite alternate;
+    }
+    @keyframes slowZoom {
+      from { transform: scale(1.01); }
+      to { transform: scale(1.06); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 42%, rgba(8, 13, 24, .12) 0%, rgba(8, 13, 24, .68) 72%, rgba(8, 13, 24, .92) 100%),
+        linear-gradient(to bottom, rgba(8, 13, 24, .62) 0%, rgba(8, 13, 24, .18) 38%, rgba(8, 13, 24, .45) 75%, #080d18 100%);
+    }
+    .hero-frame {
+      position: absolute;
+      inset: 84px 24px 24px;
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 28px;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-stage {
+      position: relative;
+      z-index: 2;
+      width: min(1040px, 100%);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Teks Besar PORTOFOLIO Dua Lapis */
+    .title-stack {
+      position: relative;
+      display: inline-block;
+      line-height: .92;
+      user-select: none;
+      animation: titleReveal 1s cubic-bezier(.16, 1, .3, 1) both;
+    }
+    .title-fill, .title-stroke {
+      font-family: "Anton", "Manrope", sans-serif;
+      font-size: clamp(4.2rem, 15.2vw, 12.4rem);
+      letter-spacing: .025em;
+      text-transform: uppercase;
+      display: block;
+    }
+    .title-fill {
+      background: linear-gradient(180deg, rgba(165, 58, 70, .92) 0%, rgba(112, 34, 44, .94) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 16px 35px rgba(0, 0, 0, .65));
+    }
+    .title-stroke {
+      position: absolute;
+      inset: 0;
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(255, 255, 255, .88);
+      transform: translate(4px, -4px);
+      pointer-events: none;
+    }
+    .hero-caption {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 16px;
+      margin-top: 18px;
+      padding-inline: 8px;
+      animation: fadeUp .9s .25s ease both;
+    }
+    .hero-signature {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.85rem);
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: .01em;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, .85);
+      margin-left: auto;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+      animation: fadeUp .9s .4s ease both;
+    }
+
+    /* Tombol Navigasi Slide Vertikal Kanan */
+    .slide-controls {
+      position: fixed;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 55;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      background: rgba(15, 23, 42, .68);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(12px);
+      padding: 10px 7px;
+      border-radius: 999px;
+    }
+    .slide-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: #f1f5f9;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: .2s;
+    }
+    .slide-btn:hover {
+      background: var(--accent);
+      color: #080d18;
+      border-color: var(--accent);
+    }
+    .slide-dots {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      padding: 4px 0;
+    }
+    .slide-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.3);
+      transition: all .3s ease;
+      cursor: pointer;
+    }
+    .slide-dot.active {
+      height: 20px;
+      background: var(--accent);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(38px) scale(.985);
+      transition: opacity .75s cubic-bezier(.16, 1, .3, 1), transform .75s cubic-bezier(.16, 1, .3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    @keyframes titleReveal {
+      from { opacity: 0; transform: translateY(28px) scale(.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Komponen Umum */
+    h1, h2, h3 { font-family: "Manrope", sans-serif; line-height: 1.2; margin: 0; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 13px;
+      font-weight: 700;
+      font-size: .9rem;
+      transition: .25s;
+      border: 1px solid var(--line);
+    }
+    .btn-primary {
+      background: linear-gradient(115deg, #0891b2, #4f46e5);
+      border: 0;
+      color: #fff;
+      box-shadow: 0 12px 32px rgba(8,145,178,.24);
+    }
+    .btn-secondary {
+      background: rgba(15, 23, 42, .75);
+      backdrop-filter: blur(8px);
+      color: #f1f5f9;
+    }
+    .btn:hover { transform: translateY(-2px); }
+
+    section.content-sec { padding: 82px 0; position: relative; }
+    .section-head { margin-bottom: 32px; }
+    .kicker {
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    h2 { font-size: clamp(1.8rem, 3.2vw, 2.55rem); letter-spacing: -.04em; }
+    .section-desc { color: var(--muted); max-width: 700px; margin: 12px 0 0; }
+    .grid { display: grid; gap: 18px; }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card {
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(19,31,49,.9), rgba(12,19,31,.92));
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+    .card:hover {
+      border-color: rgba(103,232,249,.35);
+      transform: translateY(-3px);
+    }
+    .card-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+    .icon-box {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      background: rgba(103,232,249,.09);
+      border: 1px solid rgba(103,232,249,.13);
+    }
+    .card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+    .meta { color: var(--accent); font-size: .82rem; font-weight: 600; }
+    .card p, .card li { color: var(--muted); font-size: .91rem; }
+    .card ul { margin: 12px 0 0; padding-left: 18px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .chip {
+      font-size: .76rem;
+      color: #cbd5e1;
+      background: rgba(148,163,184,.08);
+      border: 1px solid var(--line);
+      padding: 5px 10px;
+      border-radius: 999px;
+    }
+
+    /* Tentang Saya — Gaya Editorial Narasi + Foto */
+    .about-editorial {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(240px, .75fr);
+      gap: 32px;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(19,31,49,.9), rgba(12,19,31,.92));
+      border-radius: var(--radius);
+      padding: clamp(24px, 4vw, 40px);
+    }
+    .about-heading {
+      font-family: "Anton", "Manrope", sans-serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      line-height: 1.02;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .about-statement {
+      font-size: .98rem;
+      line-height: 1.78;
+      color: #cbd5e1;
+      margin: 0 0 22px;
+    }
+    .about-name-display {
+      font-family: "Anton", "Manrope", sans-serif;
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      color: var(--accent);
+      line-height: 1.1;
+    }
+    .about-sub {
+      font-size: .85rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .about-photo-frame {
+      width: 100%;
+      max-width: 290px;
+      aspect-ratio: 3 / 4;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(103,232,249,.28);
+      margin-inline: auto;
+    }
+    .about-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+
+    .timeline { border-left: 1px solid rgba(103,232,249,.3); padding-left: 25px; margin-left: 9px; }
+    .timeline-item { position: relative; padding: 0 0 12px; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -31px;
+      top: 7px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(103,232,249,.1);
+    }
+    .project-card { overflow: hidden; padding: 0; display: flex; flex-direction: column; }
+    .project-banner {
+      min-height: 145px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(8,145,178,.17), rgba(79,70,229,.2));
+      border-bottom: 1px solid var(--line);
+    }
+    .project-banner i { font-size: 2.7rem; color: rgba(165,243,252,.85); }
+    .project-content { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+    .project-content p { flex: 1; }
+    .project-link {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: .85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .project-link:hover { color: #fff; }
+    .cert-item { display: flex; gap: 15px; align-items: flex-start; }
+    .cert-item + .cert-item { border-top: 1px solid var(--line); padding-top: 18px; margin-top: 18px; }
+    .cert-item p { margin: 5px 0 0; }
+    .contact-box {
+      background: linear-gradient(135deg, rgba(8,145,178,.12), rgba(79,70,229,.13));
+      border: 1px solid rgba(103,232,249,.18);
+      border-radius: 28px;
+      padding: clamp(28px, 5vw, 55px);
+      text-align: center;
+    }
+    .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
+    .contact-links .btn { min-width: 150px; }
+
+    /* Slide Penutup: Terima Kasih */
+    .thanks-slide {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 25%, rgba(8, 145, 178, .16), transparent 45%),
+        radial-gradient(circle at 80% 75%, rgba(136, 46, 56, .22), transparent 50%),
+        #070b14;
+      border-top: 1px solid var(--line);
+    }
+    .thanks-frame {
+      position: absolute;
+      inset: 28px;
+      border: 1px solid rgba(255, 255, 255, .09);
+      border-radius: 28px;
+      pointer-events: none;
+    }
+    .thanks-stage {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .thanks-stack {
+      position: relative;
+      display: inline-block;
+      line-height: .95;
+      margin: 10px 0 18px;
+      user-select: none;
+    }
+    .thanks-fill, .thanks-stroke {
+      font-family: "Anton", "Manrope", sans-serif;
+      font-size: clamp(3.3rem, 11.5vw, 9.2rem);
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      display: block;
+    }
+    .thanks-fill {
+      background: linear-gradient(135deg, #67e8f9 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      opacity: .9;
+    }
+    .thanks-stroke {
+      position: absolute;
+      inset: 0;
+      color: transparent;
+      -webkit-text-stroke: 1.8px rgba(255, 255, 255, .82);
+      transform: translate(4px, -4px);
+      pointer-events: none;
+    }
+    .thanks-note {
+      color: var(--muted);
+      max-width: 580px;
+      font-size: 1rem;
+      margin: 0 auto 26px;
+    }
+    .thanks-sign {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.35rem;
+      color: #f8fafc;
+      margin-bottom: 24px;
+    }
+
+    footer {
+      padding: 22px 0 28px;
+      border-top: 1px solid var(--line);
+      color: #718096;
+      font-size: .8rem;
+      text-align: center;
+      background: #060a12;
+    }
+    .muted { color: var(--muted); }
+
+    @media (max-width: 850px) {
+      .about-editorial { grid-template-columns: 1fr; text-align: center; }
+      .about-photo-frame { max-width: 240px; }
+      .three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .title-stroke, .thanks-stroke { -webkit-text-stroke: 1.5px rgba(255,255,255,.85); transform: translate(3px, -3px); }
+      .hero-frame { inset: 78px 14px 14px; border-radius: 20px; }
+    }
+    @media (max-width: 640px) {
+      .nav-inner { min-height: 62px; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 62px;
+        left: 0;
+        right: 0;
+        padding: 18px 20px 22px;
+        background: #0b1220;
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+      .nav-links.open { display: flex; }
+      .hero-frame { display: none; }
+      .thanks-frame { inset: 14px; border-radius: 20px; }
+      .hero-caption { justify-content: center; text-align: center; }
+      .hero-signature { margin-left: 0; }
+      .slide-controls { right: 10px; padding: 8px 5px; }
+      .slide-btn { width: 30px; height: 30px; font-size: .75rem; }
+      section.content-sec { padding: 58px 0; }
+      .two, .three { grid-template-columns: 1fr; }
+      .card { padding: 20px; }
+      .project-card { padding: 0; }
+      .contact-links .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#home"> PORTOFOLIO<span></span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Buka menu navigasi"><i class="fa-solid fa-bars"></i></button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="active">Beranda</a>
+        <a href="#about">Tentang</a>
+        <a href="#experience">Pengalaman</a>
+        <a href="#projects">Proyek</a>
+        <a href="#credentials">Sertifikasi</a>
+        <a href="#contact">Kontak</a>
+        <a href="#thanks">Penutup</a>
+      </nav>
+    </div>
+  </header>
+
+  <aside class="slide-controls" aria-label="Navigasi slide">
+    <button class="slide-btn" id="prevSlide" title="Slide sebelumnya"><i class="fa-solid fa-chevron-up"></i></button>
+    <div class="slide-dots" id="slideDots"></div>
+    <button class="slide-btn" id="nextSlide" title="Slide berikutnya"><i class="fa-solid fa-chevron-down"></i></button>
+  </aside>
+
+  <main>
+    <!-- SLIDE 1: HERO COVER -->
+    <section class="hero-cover page-slide" id="home">
+      <div class="hero-bg-wrap">
+        <img src="asset/LatarBelakang.jpeg" alt="Wulan Febri Enjelina" class="hero-bg">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-frame" aria-hidden="true"></div>
+      <div class="hero-stage">
+        <div class="title-stack">
+          <span class="title-fill">PORTOFOLIO</span>
+          <span class="title-stroke" aria-hidden="true">PORTOFOLIO</span>
+        </div>
+        <div class="hero-caption">
+          <div class="hero-signature">Wulan Febri Enjelina</div>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#about"><i class="fa-solid fa-arrow-down"></i> Jelajahi Profil</a>
+          <a class="btn btn-secondary" href="#projects"><i class="fa-solid fa-folder-open"></i> Lihat Proyek</a>
+        </div>
+      </div>
+    </section>
+
+    <!--  TENTANG -->
+    <section class="content-sec page-slide" id="about">
+      <div class="container reveal">
+        <div class="about-editorial">
+          <div>
+            <div class="about-heading">TENTANG SAYA</div>
+            <p class="about-statement">
+              Saya adalah lulusan D4 Keamanan Sistem Informasi dari Politeknik Negeri Bengkalis dengan IPK 3,49/4,00 yang memiliki minat dan pengalaman di bidang administrasi perkantoran, dukungan HR, pengolahan data, serta pengembangan aplikasi web menggunakan PHP, Laravel, dan MySQL. Saya berpengalaman mendukung operasional administrasi dan pengelolaan arsip selama magang di PT Telkom Akses Pematangsiantar, sekaligus memiliki sertifikasi BNSP Network Administrator Muda dan sertifikat Belajar Dasar AI dari Dicoding. Memiliki ketelitian yang baik, disiplin, serta mampu bekerja secara terstruktur baik secara individu maupun dalam tim untuk mendukung kelancaran operasional organisasi secara profesional.
+            </p>
+            <div class="about-name-display">WULAN FEBRI ENJELINA</div>
+            <div class="about-sub">D4 Keamanan Sistem Informasi · Politeknik Negeri Bengkalis (2022–2026)</div>
+          </div>
+          <div class="about-photo-frame">
+            <img src="asset/Profil.jpeg" alt="Foto Wulan Febri Enjelina">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: PENGALAMAN -->
+    <section class="content-sec page-slide" id="experience">
+      <div class="container reveal">
+        <div class="section-head">
+          <div class="kicker">Pengalaman</div>
+          <h2>Pengalaman magang</h2>
+          <p class="section-desc">Pengalaman kerja praktik yang melatih kerapian data, koordinasi tim, dan pembuatan sistem pendukung operasional.</p>
+        </div>
+        <article class="card">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="meta">Magang · 4 bulan</div>
+              <h3>Staf Administrasi</h3>
+              <p><strong>PT Telkom Akses</strong> · Pematangsiantar, Sumatera Utara</p>
+              <ul>
+                <li>Membantu administrasi HR, pengelolaan berkas, dan rekapitulasi data karyawan.</li>
+                <li>Mendukung kelancaran administrasi unit serta kebutuhan operasional harian.</li>
+                <li>Membangun aplikasi manajemen stok barang berbasis Laravel, PHP, dan MySQL untuk kebutuhan internal.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: PROYEK -->
+    <section class="content-sec page-slide" id="projects">
+      <div class="container reveal">
+        <div class="section-head">
+          <div class="kicker">Proyek &amp; Publikasi</div>
+          <h2>Hasil karya</h2>
+          <p class="section-desc">Beberapa proyek web dan publikasi ilmiah yang pernah dikerjakan.</p>
+        </div>
+        <div class="grid two">
+          <article class="card project-card">
+            <div class="project-banner"><i class="fa-solid fa-boxes-stacked"></i></div>
+            <div class="project-content">
+              <div class="meta">Laravel · PHP · MySQL</div>
+              <h3>Aplikasi Manajemen Stok Barang</h3>
+              <p>Sistem pemantauan persediaan barang dengan autentikasi login, dashboard, manajemen barang, kategori, supplier, pencatatan barang masuk dan keluar, riwayat, serta laporan stok.</p>
+              <div class="chips">
+                <span class="chip">CRUD</span>
+                <span class="chip">Inventory</span>
+                <span class="chip">Dashboard</span>
+              </div>
+              <span class="project-link muted"><i class="fa-solid fa-lock"></i> Sistem internal magang</span>
+            </div>
+          </article>
+          <article class="card project-card">
+            <div class="project-banner"><i class="fa-solid fa-building-circle-check"></i></div>
+            <div class="project-content">
+              <div class="meta">PHP Native · MySQL · Bootstrap</div>
+              <h3>E-Fasilitas — Peminjaman Fasilitas Kampus</h3>
+              <p>Aplikasi web untuk pengajuan, persetujuan, dan pelacakan riwayat peminjaman fasilitas kampus dengan penerapan Prepared Statement guna mengamankan query database.</p>
+              <div class="chips">
+                <span class="chip">Web App</span>
+                <span class="chip">Prepared Statement</span>
+              </div>
+              <a class="project-link" href="https://sipemfas.polbeng.ac.id/" target="_blank" rel="noopener">Buka aplikasi <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </article>
+          <article class="card project-card">
+            <div class="project-banner"><i class="fa-solid fa-book-open"></i></div>
+            <div class="project-content">
+              <div class="meta">Jurnal JATI · Vol. 10 No. 1 (2026)</div>
+              <h3>Implementasi Prepared Statement pada Form Input</h3>
+              <p>Artikel penelitian skripsi mengenai pencegahan serangan SQL Injection pada aplikasi web peminjaman fasilitas kampus.</p>
+              <div class="chips">
+                <span class="chip">SQL Injection</span>
+                <span class="chip">Keamanan Web</span>
+              </div>
+              <a class="project-link" href="https://doi.org/10.36040/jati.v10i1.16925" target="_blank" rel="noopener">Baca publikasi <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </article>
+          <article class="card project-card">
+            <div class="project-banner"><i class="fa-solid fa-envelope-open-text"></i></div>
+            <div class="project-content">
+              <div class="meta">HTML · CSS · JavaScript</div>
+              <h3>Website Undangan Digital</h3>
+              <p>Undangan pernikahan berbasis web dengan tata letak responsif dan parameter tautan personal untuk masing-masing tamu.</p>
+              <div class="chips">
+                <span class="chip">Responsive</span>
+                <span class="chip">Personal Link</span>
+              </div>
+              <a class="project-link" href="https://github.com/WulanFebriEnjelina/Weding-Candra-dan-Anida" target="_blank" rel="noopener">Lihat di GitHub <i class="fa-brands fa-github"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERTIFIKASI -->
+    <section class="content-sec page-slide" id="credentials">
+      <div class="container reveal">
+        <div class="section-head">
+          <div class="kicker">Sertifikasi</div>
+          <h2>Sertifikasi &amp; pelatihan</h2>
+          <p class="section-desc">Sertifikat kompetensi dan pelatihan pendukung di bidang jaringan dan teknologi informasi.</p>
+        </div>
+        <article class="card">
+          <div class="cert-item">
+            <div class="icon-box"><i class="fa-solid fa-certificate"></i></div>
+            <div>
+              <h3>BNSP — Network Administrator Muda</h3>
+              <div class="meta">2025 · Administrasi Jaringan</div>
+              <p>Sertifikasi kompetensi bidang administrasi jaringan komputer.</p>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="icon-box"><i class="fa-solid fa-brain"></i></div>
+            <div>
+              <h3>Dicoding — Belajar Dasar AI</h3>
+              <div class="meta">Oktober 2025</div>
+              <p>Pelatihan dasar konsep dan penerapan Artificial Intelligence.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!--KONTAK -->
+    <section class="content-sec page-slide" id="contact">
+      <div class="container reveal">
+        <div class="contact-box">
+          <div class="kicker">Kontak</div>
+          <h2>Hubungi saya</h2>
+          <p class="section-desc" style="margin-inline:auto">Terbuka untuk peluang kerja penuh waktu, kontrak, atau kolaborasi pada posisi administrasi, HR, web development, IT support, dan network administration.</p>
+          <div class="contact-links">
+            <a class="btn btn-primary" href="mailto:Wulanfebrienjelina@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+            <a class="btn btn-secondary" href="https://wa.me/6282162705404" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/wulan-febri-enjelina" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a class="btn btn-secondary" href="https://github.com/WulanFebriEnjelina" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PENUTUP-->
+    <section class="thanks-slide page-slide" id="thanks">
+      <div class="thanks-frame" aria-hidden="true"></div>
+      <div class="thanks-stage reveal">
+        <div class="thanks-stack">
+          <span class="thanks-fill">TERIMA KASIH</span>
+          <span class="thanks-stroke" aria-hidden="true">TERIMA KASIH</span>
+        </div>
+        <p class="thanks-note">Terima kasih telah meluangkan waktu untuk meninjau profil, pengalaman, dan karya saya. Saya sangat antusias untuk berdiskusi lebih lanjut mengenai peluang kerja maupun kolaborasi.</p>
+        <div class="thanks-sign">— Wulan Febri Enjelina</div>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">
+          <a class="btn btn-primary" href="#home"><i class="fa-solid fa-arrow-up"></i> Kembali ke Atas</a>
+          <a class="btn btn-secondary" href="https://wa.me/6282162705404" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Chat WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Wulan Febri Enjelina</div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+    const slides = Array.from(document.querySelectorAll('.page-slide'));
+    const navItems = Array.from(links.querySelectorAll('a'));
+    const dotsWrap = document.getElementById('slideDots');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    let currentIndex = 0;
+
+    function updateActiveUI(index) {
+      currentIndex = index;
+      const dots = Array.from(dotsWrap.querySelectorAll('.slide-dot'));
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+
+      const activeId = slides[index]?.id;
+      navItems.forEach(item => {
+        item.classList.toggle('active', item.getAttribute('href') === `#${activeId}`);
+      });
+    }
+
+    function goToSlide(index) {
+      const clamped = Math.max(0, Math.min(slides.length - 1, index));
+      slides[clamped].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      updateActiveUI(clamped);
+    }
+
+    slides.forEach((sec, idx) => {
+      const dot = document.createElement('span');
+      dot.className = 'slide-dot' + (idx === 0 ? ' active' : '');
+      dot.title = sec.id.toUpperCase();
+      dot.addEventListener('click', () => goToSlide(idx));
+      dotsWrap.appendChild(dot);
+    });
+
+    prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+    nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.14 });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    const slideObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = slides.indexOf(entry.target);
+          if (idx !== -1) updateActiveUI(idx);
+        }
+      });
+    }, { threshold: 0.45 });
+
+    slides.forEach(sec => slideObserver.observe(sec));
+  </script>
+</body>
+</html>
